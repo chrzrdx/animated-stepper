@@ -1,7 +1,6 @@
 import { STEP } from "../../enums";
 import { TStepperHeaderProps } from "../../types";
 import { Step } from "./Step";
-STEP;
 
 export function Header({ steps, completed }: TStepperHeaderProps) {
   return (
