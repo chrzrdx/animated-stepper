@@ -30,7 +30,17 @@ export function Step({ step, variant }: TStepProps) {
       initial={false}
       animate={stepVariant}
     >
-      {variant === STEP.COMPLETED ? <CheckIcon /> : step}
+      {variant === STEP.COMPLETED ? (
+        <div className="h-6 w-6">
+          <CheckIcon
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ type: "tween", ease: "easeOut", delay: 0.2 }}
+          />
+        </div>
+      ) : (
+        step
+      )}
     </motion.li>
   );
 }
