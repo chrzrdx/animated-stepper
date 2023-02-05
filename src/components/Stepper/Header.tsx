@@ -1,5 +1,7 @@
+import { STEP } from "../../enums";
 import { TStepperHeaderProps } from "../../types";
 import { Step } from "./Step";
+STEP;
 
 export function Header({ steps, completed }: TStepperHeaderProps) {
   return (
@@ -8,9 +10,13 @@ export function Header({ steps, completed }: TStepperHeaderProps) {
         {steps.map((step) => (
           <Step
             step={step}
-            inactive={step > completed + 1}
-            active={step === completed + 1}
-            completed={step <= completed}
+            variant={
+              step <= completed
+                ? STEP.COMPLETED
+                : step === completed + 1
+                ? STEP.ACTIVE
+                : STEP.INACTIVE
+            }
             key={step}
           />
         ))}

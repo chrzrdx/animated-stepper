@@ -1,3 +1,4 @@
+import { STEP } from "../../enums";
 import { TStepProps } from "../../types";
 import { CheckIcon } from "./CheckIcon";
 import { motion } from "framer-motion";
@@ -20,12 +21,8 @@ const variants = {
   },
 };
 
-export function Step({ step, active, inactive, completed }: TStepProps) {
-  const stepVariant: keyof typeof variants = completed
-    ? "completed"
-    : active
-    ? "active"
-    : "inactive";
+export function Step({ step, variant }: TStepProps) {
+  const stepVariant: keyof typeof variants = variant;
   return (
     <motion.li
       className="h-12 w-12 rounded-full border-2 flex items-center justify-center leading-none"
@@ -33,7 +30,7 @@ export function Step({ step, active, inactive, completed }: TStepProps) {
       initial={false}
       animate={stepVariant}
     >
-      {completed ? <CheckIcon /> : step}
+      {variant === STEP.COMPLETED ? <CheckIcon /> : step}
     </motion.li>
   );
 }

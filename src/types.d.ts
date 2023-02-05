@@ -1,8 +1,8 @@
+import { STEP } from "./enums";
+
 export type TStepProps = {
   step: number;
-  active: boolean;
-  inactive: boolean;
-  completed: boolean;
+  variant: STEP;
 };
 
 export type TStepperHeaderProps = {
