@@ -13,9 +13,9 @@ export function CheckIcon() {
         <path
           d="M19.5 7L9 17.5L5 13.5"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </div>

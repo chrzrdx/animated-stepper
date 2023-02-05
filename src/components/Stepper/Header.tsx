@@ -11,6 +11,7 @@ export function Header({ steps, completed }: TStepperHeaderProps) {
             inactive={step > completed + 1}
             active={step === completed + 1}
             completed={step <= completed}
+            key={step}
           />
         ))}
       </ul>
