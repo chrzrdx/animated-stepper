@@ -9,3 +9,8 @@ export type TStepperHeaderProps = {
   steps: number[];
   completed: number;
 };
+
+type TFooterActionsProps = {
+  onBack: () => void;
+  onContinue: () => void;
+};
