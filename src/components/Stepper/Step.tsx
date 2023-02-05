@@ -2,25 +2,36 @@ import { TStepProps } from "../../types";
 import { CheckIcon } from "./CheckIcon";
 import { motion } from "framer-motion";
 
+const variants = {
+  completed: {
+    backgroundColor: "var(--color-blue-500)",
+    borderColor: "var(--color-blue-500)",
+    color: "var(--color-white)",
+  },
+  active: {
+    backgroundColor: "var(--color-white)",
+    borderColor: "var(--color-blue-500)",
+    color: "var(--color-blue-600)",
+  },
+  inactive: {
+    backgroundColor: "var(--color-white)",
+    borderColor: "var(--color-slate-200)",
+    color: "var(--color-slate-400)",
+  },
+};
+
 export function Step({ step, active, inactive, completed }: TStepProps) {
+  const stepVariant: keyof typeof variants = completed
+    ? "completed"
+    : active
+    ? "active"
+    : "inactive";
   return (
     <motion.li
       className="h-12 w-12 rounded-full border-2 flex items-center justify-center leading-none"
+      variants={variants}
       initial={false}
-      animate={{
-        backgroundColor: completed
-          ? "var(--color-blue-500)"
-          : "var(--color-white)",
-        borderColor:
-          completed || active
-            ? "var(--color-blue-500)"
-            : "var(--color-slate-200)",
-        color: completed
-          ? "var(--color-white)"
-          : active
-          ? "var(--color-blue-600)"
-          : "var(--color-slate-400)",
-      }}
+      animate={stepVariant}
     >
       {completed ? <CheckIcon /> : step}
     </motion.li>
