@@ -16,7 +16,7 @@ function Stepper({ numSteps = 4 }) {
     setCompleted((completed) => Math.min(completed + 1, last));
 
   return (
-    <div className="rounded-xl bg-white py-10 px-12 w-full shadow-2xl flex flex-col gap-12">
+    <div className="rounded-xl bg-white py-7 px-9 sm:py-10 sm:px-12 w-full shadow-2xl flex flex-col gap-9 sm:gap-12">
       <Header steps={steps} completed={completed} />
       <ContentPlaceholder />
       <FooterActions onBack={handleBack} onContinue={handleContinue} />
