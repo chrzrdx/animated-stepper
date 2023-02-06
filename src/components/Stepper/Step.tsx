@@ -23,15 +23,16 @@ const stepVariants = {
 
 const backdropVariants = {
   completed: {
-    scale: 1.25,
-    opacity: 0,
+    scale: 1.2,
     transition: {
-      duration: 0.6,
+      delay: 0.2,
+      type: "tween",
+      ease: "circOut",
     },
   },
-  incomplete: {
+  active: {
     scale: 1,
-    opacity: 1,
+    transition: { duration: 0, delay: 0 },
   },
 } satisfies Variants;
 
@@ -40,9 +41,8 @@ export function Step({ step, variant }: TStepProps) {
   return (
     <li className="h-12 w-12 relative">
       <motion.div
-        className="absolute inset-0 bg-blue-300 rounded-full"
+        className="absolute inset-0 bg-blue-200 rounded-full"
         variants={backdropVariants}
-        initial="incomplete"
         animate={stepVariant}
       />
       <motion.div
@@ -50,17 +50,18 @@ export function Step({ step, variant }: TStepProps) {
         variants={stepVariants}
         initial={false}
         animate={stepVariant}
+        transition={{ duration: 0.2 }}
       >
         {variant === STEP.COMPLETED ? (
           <div className="h-6 w-6">
             <CheckIcon
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
               transition={{ type: "tween", ease: "easeOut", delay: 0.2 }}
             />
           </div>
         ) : (
-          step
+          <span>{step}</span>
         )}
       </motion.div>
     </li>
